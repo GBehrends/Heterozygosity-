@@ -75,5 +75,5 @@ paste <location of Sample ID list> ${i}_Obs_Het.txt | cut -f 1,3 > ${i}_Obs_Het_
 
 
 
-## Step 7: Export to Computer for Further Analysis :) ## 
+### Step 7: Export to Computer for Further Analysis :) ###
  
