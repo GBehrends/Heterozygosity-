@@ -39,7 +39,7 @@ workdir=/lustre/scratch/gbehrend/EthiopianBirdsProject/${i}
 vcftools --vcf ${workdir}/03_vcf/${input_array}.g.vcf  --max-missing 0.5 --minQ 20 --minGQ 20 --minDP 6 --max-meanDP 50  --max-alleles 2 --mac 1 --max-maf 0.49 --remove-indels --include-non-variant-sites --recode --recode-INFO-all --out ${i}/04_vcf_all_sites/${input_array}
 
 # Run bcftools to simplify vcfs for Het calculation 
-bcftools query -f '%CHROM\t%POS\t%REF\t%ALT[\t%GT]\n ' ${i}/04_vcf_all_sites/${input_array}.recode.vcf > ${i}/04_vcf_all_sites/${input_array}.simple.vcf;
+bcftools query -f '%POS\t%REF\t%ALT[\t%GT]\n ' ${i}/04_vcf_all_sites/${input_array}.recode.vcf > ${i}/04_vcf_all_sites/${input_array}.simple.vcf;
 done 
 
 
@@ -59,12 +59,12 @@ for i in $(cat ../specieslist); do sed 's/|/./g' 04_vcf_all_sites/${i}.simple.vc
 
 for i in $(ls | grep "simple.vcf"); do
 END="$(awk '{print NF}' ${i} | sort -nu | tail -n 1)"
-for ((x = 5; x <= END; ++x)); do 
+for ((x = 4; x <= END; ++x)); do
 Genotyped_Count="$(cut -f${x} ${i} | wc -l | sed 's/ /\t/g' | cut -f1)"
 Het_Count="$(cut -f${x} ${i} | grep -F -e '0/1' -e '1/0' -e '1|0' -e '0|1' | wc -l | sed 's/ /\t/g' | cut -f1)"
-echo " scale=10; ${Het_Count} / ${Genotyped_Count}" | bc >> ${i}_Obs_Het_Temp.txt
-cat -n ${i}_Obs_Het_Temp.txt > ${i}_Het.txt; done
-rm *Temp.txt; done
+echo " scale=10; ${Het_Count} / ${Genotyped_Count}" | bc >> ../Het_Out/${i}_Obs_Het_Temp.txt
+cat -n ../Het_Out/${i}_Obs_Het_Temp.txt >../Het_Out/${i}_Het.txt; done
+rm ../Het_Out/*Temp.txt; done
 
 
 
