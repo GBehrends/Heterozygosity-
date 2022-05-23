@@ -37,3 +37,7 @@ paste Sample_ID_list Obs_Het.txt | cut -f 1,3 > Obs_Het_final.tsv
 
 An example of the ID list is included 
 
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Step 7: Plot observed heterosyzgosity results in R with Plot_Het.r
+
