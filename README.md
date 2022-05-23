@@ -12,7 +12,7 @@ STEP 2: Submit ConcatFilter.sh to filter and simplify the genotype info
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------
 
-STEP 3: STEP 3: Concatenate the simplified vcf files 
+STEP 3: Concatenate the simplified vcf files 
 
 cat *simple.vcf >> name.simple.vcf2 \
 mv name.simple.vcf2 name.simple.vcf
