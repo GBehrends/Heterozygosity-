@@ -8,8 +8,8 @@
 
 # Be sure to make output directory separate from the input directory. 
 # Input directory is the directory containing your .simple.vcfs files.  
-outputdir=../Het_Out
-inputdir=
+outputdir=Het
+inputdir=Het/SimpleVCF
 
 
 for i in $(ls ${inputdir} | grep "simple.vcf"); do
