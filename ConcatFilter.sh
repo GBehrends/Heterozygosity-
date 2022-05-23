@@ -18,7 +18,7 @@ input_array=$( head -n${SLURM_ARRAY_TASK_ID} <helper list> | tail -n1 )
 for i in $(cat ../specieslist); do 
 
 # define main working directory
-workdir=/lustre/scratch/gbehrend/EthiopianBirdsProject/${i}
+<working_directory>
 
 # Run vcftools 
 vcftools --vcf ${workdir}/03_vcf/${input_array}.g.vcf  --max-missing 0.5 --minQ 20 --minGQ 20 --minDP 6 --max-meanDP 50  --max-alleles 2 --mac 1 --max-maf 0.49 --remove-indels --include-non-variant-sites --recode --recode-INFO-all --out ${i}/04_vcf_all_sites/${input_array}
