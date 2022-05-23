@@ -39,5 +39,5 @@ An example of the ID list is included
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Step 7: Plot observed heterosyzgosity results in R with Plot_Het.r
+Step 7: Plot observed heterosyzgosity results with Plot_Het.r
 
